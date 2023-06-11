@@ -11,10 +11,27 @@
       }
     },
     methods: {
+      isInpEmpty(){
+        if(!this.inp){
+          alert('todo item cant be empty');
+          return true;
+        }else return false;
+      },
       handleAddTodo(){
+        if(this.isInpEmpty()) {
+          return false;
+        }
         this.todoLists.push(this.inp);
         this.inp = "";
       },
+
+      handleEditTodo(idx, newValue){
+        // if(this.isInpEmpty()) {
+        //   return false;
+        // }
+        this.todoLists[idx] = newValue;
+      },
+
       handleDeleteTodo(idx){
         this.todoLists.splice(idx, 1);
       }
@@ -29,6 +46,6 @@
 
 <template>
   <UserInput @addTodo="handleAddTodo" @onChange="(val)=> this.inp = val" :inp="inp"/>
-  <TodoList @deleteTodo="(idx) => handleDeleteTodo(idx)" :todoLists="todoLists"/>
+  <TodoList @editTodo="(idx, newValue)=> handleEditTodo(idx, newValue)" @deleteTodo="(idx) => handleDeleteTodo(idx)" :todoLists="todoLists"/>
   <Submit @addTodo="handleAddTodo" :inp="inp"/>
 </template>
