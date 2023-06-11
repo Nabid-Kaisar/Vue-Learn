@@ -10,6 +10,12 @@
         inp: ''
       }
     },
+    methods: {
+      handleAddTodo(){
+        this.todoLists.push(this.inp);
+        this.inp = "";
+      }
+    },
     components:{
       UserInput,
       Submit,
@@ -19,7 +25,7 @@
 </script>
 
 <template>
-  <UserInput @onChange="(val)=> this.inp = val"/>
+  <UserInput @addTodo="handleAddTodo"  @onChange="(val)=> this.inp = val" :inp="inp"/>
   <TodoList :todoLists="todoLists"/>
-  <Submit :inp="inp"/>
+  <Submit @addTodo="handleAddTodo" :inp="inp"/>
 </template>

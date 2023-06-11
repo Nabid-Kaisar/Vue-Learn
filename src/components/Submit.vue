@@ -1,9 +1,10 @@
 <script>
   export default {
     props: ["inp"],
+    emits: ["addTodo"],
     methods: {
       handleSubmit(){
-        console.log(this.inp)
+        this.$emit('addTodo')
       }
     }
   }
