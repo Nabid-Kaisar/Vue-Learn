@@ -14,6 +14,9 @@
       handleAddTodo(){
         this.todoLists.push(this.inp);
         this.inp = "";
+      },
+      handleDeleteTodo(idx){
+        this.todoLists.splice(idx, 1);
       }
     },
     components:{
@@ -25,7 +28,7 @@
 </script>
 
 <template>
-  <UserInput @addTodo="handleAddTodo"  @onChange="(val)=> this.inp = val" :inp="inp"/>
-  <TodoList :todoLists="todoLists"/>
+  <UserInput @addTodo="handleAddTodo" @onChange="(val)=> this.inp = val" :inp="inp"/>
+  <TodoList @deleteTodo="(idx) => handleDeleteTodo(idx)" :todoLists="todoLists"/>
   <Submit @addTodo="handleAddTodo" :inp="inp"/>
 </template>
