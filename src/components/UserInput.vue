@@ -1,12 +1,13 @@
 <script>
   export default {
-    data(){
-      return {
-        inp: ''
+    emits: ["onChange"],
+    methods: {
+      handleChange(e){
+        this.$emit('onChange', e.target.value)
       }
     }
   }
 </script>
 <template>
-  <input v-bind="inp" />
+  <input @change="handleChange" />
 </template>

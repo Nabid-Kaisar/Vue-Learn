@@ -6,7 +6,8 @@
   export default {
     data(){
       return {
-        todoLists: ['learn vue pt 1', 'write some code', 'Do some testing']
+        todoLists: ['learn vue pt 1', 'write some code', 'Do some testing'],
+        inp: ''
       }
     },
     components:{
@@ -18,7 +19,7 @@
 </script>
 
 <template>
-  <UserInput />
+  <UserInput @onChange="(val)=> this.inp = val"/>
   <TodoList :todoLists="todoLists"/>
-  <Submit />
+  <Submit :inp="inp"/>
 </template>

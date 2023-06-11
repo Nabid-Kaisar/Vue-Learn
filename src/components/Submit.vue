@@ -1,3 +1,14 @@
+<script>
+  export default {
+    props: ["inp"],
+    methods: {
+      handleSubmit(){
+        console.log(this.inp)
+      }
+    }
+  }
+</script>
+
 <template>
-  <button>Add</button>
+  <button @click="handleSubmit">Add</button>
 </template>
